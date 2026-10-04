@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+gym_envs/craftium/
+datasets/
+outputs/
+minetest-run*/
+*.log

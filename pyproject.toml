@@ -1,0 +1,50 @@
+[project]
+name = "craftium-dynamic"
+version = "0.1.0"
+description = "Standalone Craftium dynamic-agent dataset generator + animated GLB exporter"
+readme = "README.md"
+requires-python = "==3.11.*"
+dependencies = [
+    "tyro>=0.8.14",
+    "setuptools==75.6.0",
+    "loguru>=0.7.2",
+    "GitPython>=3.1.44",
+    "imageio==2.37.0",
+    "imageio-ffmpeg==0.6.0",
+    "xvfbwrapper==0.2.13",
+    "utils3d",
+    "trimesh>=4.4.0",
+    "pillow>=10.0.0",
+]
+
+################ Dependency groups ################
+
+[dependency-groups]
+cu = [
+  "torch==2.7.1",
+  "numpy==1.26.4",
+]
+env = [
+  "craftium",
+  "gymnasium==0.29.1",
+]
+
+[tool.uv]
+default-groups = ["cu", "env"]
+
+################ Package source ################
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu126", group = "cu" },
+]
+craftium = { path = "gym_envs/craftium" }
+utils3d = { git = "https://github.com/EasternJournalist/utils3d", rev = "c5daf6f6c244d251f252102d09e9b7bcef791a38" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.ruff]
+line-length = 100
